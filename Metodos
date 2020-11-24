@@ -1,0 +1,134 @@
+package Examen;
+
+/**
+ *
+ * @author ariac
+ */
+public class Metodos {
+
+
+    Nodo Raiz1 = null;
+    Nodo Raiz2 = null;
+    Nodo Cima1 = null;
+    Nodo Cima2 = null;
+    int num = (int)(Math.random()*10+1);
+    Nodo Ventanilla1 = null;
+    Nodo Ventanilla2 = null;
+    Nodo Ventanilla3 = null;
+    
+    public void Ingresar (String cliente)
+    {   
+        if (cliente.equals("VIP")){   
+        if (Raiz1 == null){
+            Nodo NodoA = new Nodo(cliente, num);
+            Raiz1 = NodoA;
+            Cima1 = NodoA;
+            }else{
+                num++;
+                Nodo NodoA = new Nodo(cliente, num);
+                Cima1.siguiente = NodoA;
+                Cima1=NodoA;
+            }
+        }
+        else{
+            if (Raiz2 == null){
+            Nodo NodoB = new Nodo(cliente, num);
+            Raiz2 = NodoB;
+            Cima2 = NodoB;
+            }else{
+                num++;
+                Nodo NodoB = new Nodo(cliente, num);
+                Cima2.siguiente = NodoB;
+                Cima2=NodoB; 
+            }
+        } 
+    }
+    
+    public void Ventanilla(){
+    if(Ventanilla1 !=null && Ventanilla2 !=null && Ventanilla3 !=null){
+        System.out.println("Ventanillas Llenas");
+       }
+       if (Raiz1 == null && Raiz2 == null){
+        System.out.println("Cola Vacia");
+       }
+       if(Raiz1 !=null && Ventanilla1 == null){
+        Ventanilla1 = Raiz1;
+        Raiz1 = Raiz1.siguiente;
+       }
+       if(Raiz1 != null && Ventanilla2 == null){
+        Ventanilla2 = Raiz1;
+        Raiz1 = Raiz1.siguiente;
+       }
+       if(Raiz1 !=null && Ventanilla3 == null){
+        Ventanilla3 = Raiz1;
+        Raiz1 = Raiz1.siguiente;
+       }
+       if(Raiz2 !=null && Ventanilla1 == null){
+        Ventanilla1 = Raiz2;
+        Raiz2 = Raiz2.siguiente;
+       }
+       if(Raiz2 !=null && Ventanilla2 == null){
+        Ventanilla2 = Raiz2;
+        Raiz2 = Raiz2.siguiente;
+       }
+       if(Raiz2 !=null && Ventanilla3 == null){
+        Ventanilla3 = Raiz2;
+        Raiz2 = Raiz2.siguiente;
+       }
+       
+       Actualizar(Ventanilla1, Ventanilla2, Ventanilla3);
+    }
+    
+    public void Actualizar(Nodo Ventanilla1,Nodo Ventanilla2,Nodo Ventanilla3){
+        if (Ventanilla1 != null){
+        System.out.println("Ventanilla 1: "+Ventanilla1.cliente+Ventanilla1.num);
+        }else{
+        System.out.println("Vacio");
+        }
+        if(Ventanilla2 != null){
+        System.out.println("Ventanilla 2: "+Ventanilla2.cliente+Ventanilla2.num);
+        }else{
+        System.out.println("Vacio");
+        }
+        if (Ventanilla3 != null){
+        System.out.println("Ventanilla 3: "+Ventanilla3.cliente+Ventanilla3.num);
+        }else{
+        System.out.println("Vacio");
+        }
+    }
+    
+    public void Mostrar(){
+        Nodo a = Raiz1;
+        Nodo b = Raiz2;
+        
+        if (a == null && b == null){
+            System.out.println("Cola Vacia");
+        }else{
+        System.out.print("Vip: ");
+        while(a != null){
+            System.out.print(" "+ a.cliente+a.num);
+            a = a.siguiente;
+            }
+            System.out.println("");
+            System.out.print("Comun: ");
+            while(b != null){
+            System.out.print(" "+ b.cliente+b.num);
+            b =  b.siguiente;
+            }
+        }
+    }
+    
+   public void Terminar(){
+   int Opc = (int)(Math.random()*3+1);
+    if (Opc == 1){
+    Ventanilla1 = null;
+    }
+    if (num == 2){
+    Ventanilla2 = null;
+    }
+    if (num == 3){
+    Ventanilla3 = null;
+    }    
+    Actualizar(Ventanilla1, Ventanilla2, Ventanilla3);
+   }
+}
