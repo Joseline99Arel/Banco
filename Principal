@@ -1,0 +1,51 @@
+package Examen;
+
+import java.util.Scanner;
+
+public class Principal 
+{
+    public static void main(String[] args){     
+        Scanner entrada= new Scanner (System.in);
+        int respuesta =0, contador=1;
+        String[] Tipos = {"VIP", "COMUN"};
+        
+        Metodos Pasar = new Metodos();
+
+        while(contador==1){      
+            System.out.println("----Elige una  opcion-----");
+            System.out.println("1.- Nuevo Cliente");
+            System.out.println("2.- Pasar a Ventanilla");
+            System.out.println("3.- Mostrar Colas");
+            System.out.println("4.- Terminar Ventanilla");
+            System.out.println("5.- Salir");
+            respuesta=entrada.nextInt();
+            
+            if(respuesta>0 && respuesta<6){
+                switch(respuesta)
+                {
+                    case 1: int Numero =(int) (Math.random()*2+0);
+                        if (Numero == 0){ Pasar.Ingresar(Tipos[0]);
+                        } else{Pasar.Ingresar(Tipos[1]);
+                        }
+                        System.out.println("Usuarios");
+                        Pasar.Mostrar();
+                        break;
+                    case 2: Pasar.Ventanilla();
+                        break;
+                    case 3: Pasar.Mostrar();
+                        break;
+                    case 4: Pasar.Terminar();
+                        break;
+                    case 5: System.exit(0);
+                        break;
+                }
+                System.out.println("Quieres repetir el proceso 1:Si 2:No");
+                contador=entrada.nextInt();
+            }
+            else
+            {
+                System.out.println("El numero que ingresaste fuera de las opciones ");
+            }
+        }
+    }
+}
