@@ -1,0 +1,19 @@
+package Examen;
+
+/**
+ *
+ * @author ariac
+ */
+public class Nodo {
+    int num;
+    String cliente;
+    Nodo siguiente;
+    
+    public Nodo(String cliente, int num)
+    {
+        this.num = num;
+        this.cliente = cliente;
+        this.siguiente = null;
+    }
+    
+}
